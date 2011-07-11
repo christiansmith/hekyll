@@ -1,0 +1,14 @@
+{
+  "author": "Christian Smith <smith@anvil.io> (http://anvil.io)",
+  "name": "heckyll",
+  "description": "CouchApp blog inspired by jekyll",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
