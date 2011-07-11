@@ -11,7 +11,7 @@ describe('Post', function() {
   });
 });  
 
-describe('Post.read', function() {
+describe('Post read from file', function() {
   var post;
 
   beforeEach(function() {
@@ -20,8 +20,35 @@ describe('Post.read', function() {
     spyOn(fs, 'readFileSync').andReturn(new Buffer(data));
     post = Post.read('file.md');
   });
+
+  it('should have a markdown property',function () {
+    expect(post.markdown).toBeDefined();
+  });
   
   it('should render markdown', function() {
     expect(post.body).toEqual('<p>A bit of <em>markdown</em></p>');
   });
 });  
+
+describe('write', function() {
+  beforeEach(function() {
+    post = new Post({ 
+      markdown: 'whatever', 
+      body: '<p>whatever</p>' 
+    });    
+    spyOn(fs, 'writeFileSync');
+    
+    post.write('file.md');
+    // need a post that has been written
+    data = fs.writeFileSync.mostRecentCall.args[1];
+  });
+
+  it('should remove body', function () {
+    expect(data).not.toContain('"body":');
+  });
+
+  it('should move markdown out of json', function () {
+    expect(post.markdown).not.toBeDefined();
+  });
+});  
+

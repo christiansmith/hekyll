@@ -2,7 +2,17 @@ var Doc = require('notch').Doc
   , md = require('discount')
   , fs = require('fs');
 
-var Post = Doc.extend(null, {
+var Post = Doc.extend({
+
+  write: function (file) {
+    var src = this.markdown || '';
+    delete this.body;
+    delete this.markdown;
+    var data = JSON.stringify(this, null, 2) + ' //\n' + src;
+    fs.writeFileSync(file, data);
+  }    
+
+}, {
   schema: {
     properties: {
       type: { type: 'string', default: 'post', required: true },
