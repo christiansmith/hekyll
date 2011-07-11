@@ -1,4 +1,5 @@
-var Post = require('../apps/hekyll/lib/models').Post;
+var Post = require('../apps/hekyll/lib/models').Post
+  , fs = require('fs');
 
 describe('Post', function() {
   it('should spawn a post', function() {
@@ -10,3 +11,17 @@ describe('Post', function() {
   });
 });  
 
+describe('Post.read', function() {
+  var post;
+
+  beforeEach(function() {
+    json = Post.spawn();
+    data = JSON.stringify(json, null, 2) + ' //\n' + 'A bit of *markdown*';
+    spyOn(fs, 'readFileSync').andReturn(new Buffer(data));
+    post = Post.read('file.md');
+  });
+  
+  it('should render markdown', function() {
+    expect(post.body).toEqual('<p>A bit of <em>markdown</em></p>');
+  });
+});  
