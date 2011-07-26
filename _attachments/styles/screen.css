@@ -1,0 +1,21 @@
+body {
+  margin: auto;
+  width: 800px;
+}
+
+#page_header { 
+  margin-top: 2em;
+  margin-bottom: 3em; 
+}
+
+#page_header h1 {
+  margin-bottom: 0;
+}
+
+#page_header p {
+  margin: 0;
+}
+
+p#tags a {
+  margin-right: 0.25em;
+}

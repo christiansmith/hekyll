@@ -3,10 +3,11 @@
     "development": {
       "url": "http://localhost:5984/hekyll",
       "default": true
+    },
+    "production": {
+      "url": "http://<your>.couch.com/db",
+      "user": "someadmin"
     }
   },
-  "ddocs": {
-    "hekyll": "apps/hekyll/ddoc.js"
-  },
-  "models": "apps/hekyll/lib/models.js"
+  "models": "lib/models.js"
 }

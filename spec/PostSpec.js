@@ -1,4 +1,4 @@
-var Post = require('../apps/hekyll/lib/models').Post
+var Post = require('../lib/models').Post
   , fs = require('fs');
 
 describe('Post', function() {
@@ -16,6 +16,7 @@ describe('Post read from file', function() {
 
   beforeEach(function() {
     json = Post.spawn();
+    json.title = 'The Title of The Post';
     data = JSON.stringify(json, null, 2) + ' //\n' + 'A bit of *markdown*';
     spyOn(fs, 'readFileSync').andReturn(new Buffer(data));
     post = Post.read('file.md');
@@ -27,6 +28,10 @@ describe('Post read from file', function() {
   
   it('should render markdown', function() {
     expect(post.body).toEqual('<p>A bit of <em>markdown</em></p>');
+  });
+
+  it('should define _id from title if undefined', function() {
+    expect(post._id).toEqual('the-title-of-the-post');
   });
 });  
 
@@ -50,5 +55,6 @@ describe('write', function() {
   it('should move markdown out of json', function () {
     expect(post.markdown).not.toBeDefined();
   });
+  
 });  
 

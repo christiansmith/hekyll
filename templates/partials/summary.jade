@@ -1,0 +1,24 @@
+article
+  header#article_header
+    h2
+      a(href='/posts/{{_id}}') {{ title }}
+    time {{ published }}
+    |  by 
+    a(href='/authors/{{authorslug}}') {{ author }}
+
+  {{#summary}}
+  p
+    {{{summary}}}
+    a(href='/posts/{{_id}}') continue >>
+  {{/summary}}
+  {{^summary}}
+  {{{body}}}
+  {{/summary}}
+
+
+  footer#article_footer
+    p#tags Tagged with: 
+      {{#tags}}
+      a(href='/posts/tagged/{{.}}') {{.}}
+      {{/tags}}
+      {{^tags}} untagged {{/tags}}
