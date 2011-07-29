@@ -1,6 +1,6 @@
 # Hekyll
 
-Hekyll is a CouchApp blog inspired by jekyll and built with Notch. It runs my blog at [anvil.io](anvil.io). There's no web administration. It's all done with text editing and notch commands. 
+Hekyll is a CouchApp blog inspired by jekyll and built with [Notch](notch). It runs my blog at [anvil.io](http://anvil.io). There's no web administration. It's all done with text editing and notch commands. 
 
 ## Install
 
