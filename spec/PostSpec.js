@@ -44,7 +44,6 @@ describe('write', function() {
     spyOn(fs, 'writeFileSync');
     
     post.write('file.md');
-    // need a post that has been written
     data = fs.writeFileSync.mostRecentCall.args[1];
   });
 
@@ -55,6 +54,4 @@ describe('write', function() {
   it('should move markdown out of json', function () {
     expect(post.markdown).not.toBeDefined();
   });
-  
 });  
-
