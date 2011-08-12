@@ -9,5 +9,8 @@
       "user": "someadmin"
     }
   },
+  "defaults": {
+    "model": "post"  
+  },
   "models": "lib/models.js"
 }
