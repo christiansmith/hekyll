@@ -1,27 +1,20 @@
 !!!5
 html
   head
-    title #{blog} ~ {{ title }}
-    link(rel='stylesheet', href='/styles/screen.css')
-    link(rel='alternate',
-         href='/?format=atom',
-         type='application/atom+xml')
+    {{>head}}
 
   body
-    header#page_header
-      h1
-        a(href='/')!= blog 
-      p!= tagline
+    {{>header}}
 
-    a(href='{{atom}}') Atom Feed
+    {{#atom_current}}
+    p#atom_link {{title}} posts
+      span.feed
+        a(href='{{href}}') 
+          img(src='/images/feed.png')
+    {{/atom_current}}
 
     {{#posts}}
     {{>summary}}
     {{/posts}}
 
-    section#sidebar
-      #tags
-
-    footer#page_footer
-      hr.separator
-      p#copyright &copy; #{new Date().getFullYear()} #{author} 
+    {{>footer}}

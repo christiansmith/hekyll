@@ -1,0 +1,12 @@
+title #{blog} ~ {{ title }}
+link(rel='stylesheet', href='/styles/screen.css')
+
+{{#atom_root}}
+link(rel='alternate', href='{{href}}', title='{{title}}', type='application/atom+xml')
+{{/atom_root}}
+
+{{#atom_current}}
+link(rel='alternate', href='{{href}}', 
+     title='{{blog}} &raquo; {{title}}', type='application/atom+xml')
+{{/atom_current}}
+

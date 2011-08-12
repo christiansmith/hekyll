@@ -270,7 +270,18 @@ ddoc.list('posts', function (head, req) {
     stash = {
       title: req.query.key || info.tagline,
       posts: results,
-      atom: abspath + '?format=atom'
+      atom_root: {
+        title: info.blog,
+        href: 'http://' + req.headers.Host + '/?format=atom'
+      }
+    };
+
+    if (req.requested_path.length !== 0) {
+      stash.list = req.requested_path[req.requested_path.length - 1];
+      stash.atom_current = {
+        title: stash.list,
+        href: abspath + '?format=atom'
+      };
     }
 
     return Mustache.to_html(template, stash, partials);

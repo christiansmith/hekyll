@@ -1,5 +1,5 @@
 article
-  header#article_header
+  header.article_header
     h2
       a(href='/posts/{{_id}}') {{ title }}
     time {{ published }}
@@ -9,14 +9,14 @@ article
   {{#summary}}
   p
     {{{summary}}}
-    a(href='/posts/{{_id}}') continue >>
+    a(href='/posts/{{_id}}') continue &raquo;
   {{/summary}}
   {{^summary}}
   {{{body}}}
   {{/summary}}
 
 
-  footer#article_footer
+  footer.article_footer
     p#tags Tagged with: 
       {{#tags}}
       a(href='/posts/tagged/{{.}}') {{.}}
